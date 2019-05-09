@@ -24,7 +24,7 @@
           book
         ORDER BY
           book_id
-        LIMIT #{offset}, {limit}
+        LIMIT #{offset}, #{limit}
     </select>
 
     <update id="reduceNumber">
