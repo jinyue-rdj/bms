@@ -8,7 +8,7 @@
          version="3.1" metadata-complete="true">
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>seckill-dispatcher</servlet-name>
+    <servlet-name>bms</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     
     <!-- 配置springmvc需要加载的配置文件
@@ -19,8 +19,11 @@
       <param-value>classpath:spring/spring-*.xml</param-value>
     </init-param>
   </servlet>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   <servlet-mapping>
-    <servlet-name>seckill-dispatcher</servlet-name>
+    <servlet-name>bms</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 </web-app>
