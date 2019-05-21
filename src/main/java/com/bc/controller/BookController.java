@@ -25,7 +25,9 @@ public class BookController {
     private BookService bookService;
 
     @RequestMapping(value="/list", method=RequestMethod.GET)
+    @ResponseBody
     public String list(Model model){
+        System.out.println("yyyyyyyyyy");
         List<Book> list = bookService.getList();
         model.addAttribute("list", list);
         return "list";
