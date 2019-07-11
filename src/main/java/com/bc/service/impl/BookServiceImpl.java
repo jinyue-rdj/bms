@@ -30,6 +30,7 @@ public class BookServiceImpl implements BookService {
     private AppointmentDao appointmentDao;
 
     @Override
+    @Transactional
     public Book getById(long bookId) {
         return bookDao.queryById(bookId);
     }

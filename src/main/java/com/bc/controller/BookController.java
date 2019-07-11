@@ -42,6 +42,9 @@ public class BookController {
         if (book == null){
             return "forward:/book/list";
         }
+
+        System.out.println("The book is " + book.getName()+ " " + book.getBookId() + " " + book.getNumber());
+
         model.addAttribute("book", book);
         return "detail";
     }
