@@ -27,7 +27,6 @@ public class BookController {
     @RequestMapping(value="/list", method=RequestMethod.GET)
     @ResponseBody
     public String list(Model model){
-        System.out.println("yyyyyyyyyy");
         List<Book> list = bookService.getList();
         model.addAttribute("list", list);
         return "list";
@@ -51,7 +50,7 @@ public class BookController {
     @ResponseBody
     public Result<AppointExecution> appoint(@PathVariable("bookId")Long bookId, @RequestParam("studentId")Long studentId){
         if (studentId == null || studentId.equals("")){
-            return new Result<>(false, "学号不能为空");
+            return new Result<AppointExecution>(false, "学号不能为空");
         }
 
         AppointExecution exec = null;
@@ -66,5 +65,4 @@ public class BookController {
         }
         return new Result<AppointExecution>(true, exec);
     }
-
 }
