@@ -21,7 +21,7 @@
 
     
     <!-- 配置springmvc需要加载的配置文件
-    spring-dao.xml，spring-service.xml，spring-web.xml
+    spring-dao.xml，spring-service.xml，spring-web.xml, spring-redis.xml
     Mybatis -> spring ->springmvc-->
     <init-param>
       <param-name>contextConfigLocation</param-name>
