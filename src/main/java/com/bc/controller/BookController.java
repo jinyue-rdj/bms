@@ -12,13 +12,12 @@ import com.bc.service.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/book")
 public class BookController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -36,20 +35,20 @@ public class BookController {
 
     @RequestMapping(value="/{bookId}/detail", method = RequestMethod.GET)
     @RedisCache(type=BookController.class, fieldKey="#bookId")
-    public String detail(@PathVariable("bookId")Long bookId, Model model){
+    public Book detail(@PathVariable("bookId")Long bookId, Model model){
         if (bookId == null){
-            return "redirect:/book/list";
+            //return "redirect:/book/list";
         }
 
         Book book = bookService.getById(bookId);
         if (book == null){
-            return "forward:/book/list";
+            //return "forward:/book/list";
         }
 
         System.out.println("The book is " + book.getName()+ " " + book.getBookId() + " " + book.getNumber());
 
-        model.addAttribute("book", book);
-        return book.getName();
+        //model.addAttribute("book", book);
+        return book;
     }
 
     @RequestMapping(value="/{bookId}/cleancache", method=RequestMethod.GET)
