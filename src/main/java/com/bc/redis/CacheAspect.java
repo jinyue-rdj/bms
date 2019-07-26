@@ -1,7 +1,8 @@
 package com.bc.redis;
 
 import com.alibaba.fastjson.JSON;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -23,7 +24,7 @@ import java.util.List;
 @Aspect
 public class CacheAspect {
 
-    public static final Logger infoLog = Logger.getLogger(CacheAspect.class);
+    public static final Logger infoLog = LoggerFactory.getLogger(CacheAspect.class);
 
     @Autowired
     private RedisTemplate redisTemplate;
@@ -39,6 +40,9 @@ public class CacheAspect {
 
         final String key = parseKey(cache.fieldKey(), method,jp.getArgs());
         infoLog.info("生成key:" + key);
+        infoLog.debug("生成key:" + key);
+        infoLog.warn("生成key:" + key);
+        infoLog.error("生成key:" + key);
 
         // 得到被代理的方法上的注解
         Class modelType = method.getAnnotation(RedisCache.class).type();

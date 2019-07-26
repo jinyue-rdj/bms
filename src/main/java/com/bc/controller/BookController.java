@@ -48,6 +48,7 @@ public class BookController {
         System.out.println("The book is " + book.getName()+ " " + book.getBookId() + " " + book.getNumber());
 
         //model.addAttribute("book", book);
+
         return book;
     }
 
